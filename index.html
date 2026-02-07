@@ -71,10 +71,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <span class="text-2xl font-bold gradient-text">EngramHANK.jl</span>
-                    <span class="ml-2 px-2 py-1 text-xs font-semibold bg-green-100 text-green-800 rounded">
-                        <i class="fas fa-flask mr-1"></i>CITIZEN SCIENCE
-                    </span>
+                    <span class="text-2xl font-bold gradient-text">EngramHANK</span>
+                    
                 </div>
                 <div class="flex items-center space-x-6">
                     <a href="#about" class="text-gray-600 hover:text-primary hidden md:block">About</a>
@@ -95,16 +93,11 @@
     <!-- Hero Section -->
     <section class="hero-gradient text-white py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Citizen Science Banner -->
-            <div class="bg-white/10 backdrop-blur rounded-lg p-4 mb-8 inline-flex items-center">
-                <i class="fas fa-info-circle mr-2 text-green-300"></i>
-                <span class="text-sm">A citizen science project exploring how economic shocks affect real people differently</span>
-            </div>
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="max-w-3xl">
                 <div>
                     <h1 class="text-4xl md:text-5xl font-bold mb-6">
-                        Understanding Economic Shocks Through <span class="text-blue-300">Citizen Science</span>
+                        Understanding Economic Shocks Through <span class="text-blue-300">HANK Models</span>
                     </h1>
                     <p class="text-lg text-gray-300 mb-6">
                         I'm not an economist — I'm a concerned citizen fascinated by how <strong>HANK models</strong> reveal what traditional models miss: <em>who</em> gets hurt by economic shocks, not just <em>how much</em>.
@@ -140,35 +133,6 @@
                             <div class="text-xs text-gray-400">Speedup</div>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Code Preview -->
-                <div class="code-block text-gray-300">
-                    <div class="flex items-center mb-3">
-                        <div class="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
-                        <div class="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
-                        <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
-                        <span class="text-xs text-gray-500 ml-2">julia</span>
-                    </div>
-                    <pre style="margin:0;white-space:pre-wrap;word-break:break-word;"><code style="font-family:'JetBrains Mono',monospace;"><span style="color:#6b7280;"># A citizen scientist's approach to HANK models</span>
-
-<span style="color:#c084fc;">using</span> EngramHANK
-
-<span style="color:#6b7280;"># Calibrate to Malaysian data</span>
-params = <span style="color:#facc15;">krusell_smith_params</span>(
-    β=<span style="color:#4ade80;">0.965</span>,    <span style="color:#6b7280;"># Savings culture</span>
-    σ=<span style="color:#4ade80;">1.5</span>,      <span style="color:#6b7280;"># Risk aversion</span>
-    na=<span style="color:#4ade80;">150</span>,     <span style="color:#6b7280;"># Asset grid</span>
-    ny=<span style="color:#4ade80;">7</span>        <span style="color:#6b7280;"># Income states</span>
-)
-
-<span style="color:#6b7280;"># What happens when tourism collapses?</span>
-result = <span style="color:#facc15;">solve_engram_hank</span>(
-    params, <span style="color:#4ade80;">100</span>;
-    shock=<span style="color:#4ade80;">:tourism_shock</span>
-)
-
-<span style="color:#6b7280;"># See who gets hurt, not just GDP</span></code></pre>
                 </div>
             </div>
         </div>
