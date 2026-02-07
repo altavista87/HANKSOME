@@ -1,0 +1,16 @@
+{
+  "scenario": "food_fuel",
+  "rationale": "\n            Q1 spends 55% on food vs 20% for Q5. Food has import content\n            (rice, cooking oil, wheat). Fuel also import-intensive.\n            Services (consumed more by rich) are mostly domestic.\n            ",
+  "import_shares": {
+    "Q1": 0.38,
+    "Q2": 0.35,
+    "Q3": 0.3,
+    "Q4": 0.26,
+    "Q5": 0.22
+  },
+  "parameters": {
+    "exchange_rate_baseline": 4.75,
+    "pass_through": 0.45,
+    "r_foreign": 0.055
+  }
+}

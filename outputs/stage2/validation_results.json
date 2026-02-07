@@ -1,0 +1,14 @@
+{
+  "n_agents": 10000,
+  "mean_liquid": 25.08794403076172,
+  "mean_illiquid": 100.70587158203125,
+  "mean_consumption": 0.98982834815979,
+  "mean_income": 2.6900997161865234,
+  "mpc_ratio": 0.51343834400177,
+  "consumption_std": 0.38772428035736084,
+  "budget_residual_mean": -0.004337647929787636,
+  "wage_premium_tertiary_primary": 2.036184969987698,
+  "wage_premium_secondary_primary": 1.3229342522307346,
+  "enrollment_rate_tertiary_young": 0.3896443247795105,
+  "fraction_young": 0.1437000036239624
+}

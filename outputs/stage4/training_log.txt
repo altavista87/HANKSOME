@@ -1,0 +1,110 @@
+06:42:14 - Device: cpu
+06:42:14 - ============================================================
+06:42:14 - MALAYSIA HANK - STAGE 4: HOUSING
+06:42:14 - Started: 2026-01-30 06:42:14
+06:42:14 - ============================================================
+06:42:14 - 
+06:42:14 - Model parameters: 462,107
+06:42:14 - 
+06:42:14 - ============================================================
+06:42:14 - STAGE 4: TRAINING HANK + EDUCATION + HEALTH + HOUSING
+06:42:14 - ============================================================
+06:42:14 - Parameters: 462,107
+06:42:14 - Epochs: 6000, Device: cpu
+06:42:14 - 
+06:42:14 - Housing System:
+06:42:14 -   Types: 3 (Rent, Mortgage, Outright)
+06:42:14 -   House Price: 3.0x income
+06:42:14 -   Down Payment: 10%
+06:42:14 -   Mortgage Rate: 4.5%
+06:42:14 -   Rent Share: 25%
+06:42:14 - 
+06:42:32 - Device: cpu
+06:42:32 - ============================================================
+06:42:32 - MALAYSIA HANK - STAGE 4: HOUSING
+06:42:32 - Started: 2026-01-30 06:42:32
+06:42:32 - ============================================================
+06:42:32 - 
+06:42:32 - Model parameters: 462,107
+06:42:32 - 
+06:42:32 - ============================================================
+06:42:32 - STAGE 4: TRAINING HANK + EDUCATION + HEALTH + HOUSING
+06:42:32 - ============================================================
+06:42:32 - Parameters: 462,107
+06:42:32 - Epochs: 6000, Device: cpu
+06:42:32 - 
+06:42:32 - Housing System:
+06:42:32 -   Types: 3 (Rent, Mortgage, Outright)
+06:42:32 -   House Price: 3.0x income
+06:42:32 -   Down Payment: 10%
+06:42:32 -   Mortgage Rate: 4.5%
+06:42:32 -   Rent Share: 25%
+06:42:32 - 
+06:42:32 - Epoch    0 | Loss: 58042.066406 | C: 1.46 | HomeOwn: 65.7% | Enroll: 31.6% | Time: 0.0s
+06:42:33 - Epoch  300 | Loss: 296.217224 | C: 1.11 | HomeOwn: 68.6% | Enroll: 34.1% | Time: 1.3s
+06:42:35 - Epoch  600 | Loss: 133.640961 | C: 1.16 | HomeOwn: 39.3% | Enroll: 26.9% | Time: 2.5s
+06:42:36 - Epoch  900 | Loss: 109.436188 | C: 1.21 | HomeOwn: 30.3% | Enroll: 18.4% | Time: 3.6s
+06:42:37 - Epoch 1200 | Loss: 77.707199 | C: 1.22 | HomeOwn: 28.1% | Enroll: 26.5% | Time: 4.8s
+06:42:38 - Epoch 1500 | Loss: 94.337868 | C: 1.23 | HomeOwn: 23.5% | Enroll: 29.9% | Time: 6.0s
+06:42:39 - Epoch 1800 | Loss: 56.089111 | C: 1.24 | HomeOwn: 26.9% | Enroll: 35.2% | Time: 7.1s
+06:43:51 - Epoch 2100 | Loss: 49.646481 | C: 1.32 | HomeOwn: 24.2% | Enroll: 36.5% | Time: 78.6s
+06:43:52 - Epoch 2400 | Loss: 4.178916 | C: 1.31 | HomeOwn: 25.3% | Enroll: 37.5% | Time: 79.9s
+06:43:53 - Epoch 2700 | Loss: 1.626154 | C: 1.30 | HomeOwn: 22.3% | Enroll: 33.9% | Time: 81.2s
+06:43:55 - Epoch 3000 | Loss: 2.080592 | C: 1.30 | HomeOwn: 20.5% | Enroll: 37.7% | Time: 82.4s
+06:43:56 - Epoch 3300 | Loss: 1.975078 | C: 1.30 | HomeOwn: 21.2% | Enroll: 33.3% | Time: 83.6s
+06:43:57 - Epoch 3600 | Loss: 0.899483 | C: 1.31 | HomeOwn: 21.9% | Enroll: 43.9% | Time: 84.8s
+06:43:58 - Epoch 3900 | Loss: 0.550671 | C: 1.33 | HomeOwn: 18.5% | Enroll: 25.6% | Time: 86.0s
+06:43:59 - Epoch 4200 | Loss: 0.544087 | C: 1.32 | HomeOwn: 20.0% | Enroll: 33.4% | Time: 87.2s
+06:44:01 - Epoch 4500 | Loss: 0.615819 | C: 1.33 | HomeOwn: 22.4% | Enroll: 36.8% | Time: 88.4s
+06:44:02 - Epoch 4800 | Loss: 0.322768 | C: 1.34 | HomeOwn: 15.5% | Enroll: 40.1% | Time: 89.6s
+06:44:03 - Epoch 5100 | Loss: 0.701369 | C: 1.34 | HomeOwn: 20.3% | Enroll: 35.3% | Time: 90.9s
+06:44:04 - Epoch 5400 | Loss: 0.427547 | C: 1.32 | HomeOwn: 22.2% | Enroll: 33.6% | Time: 92.1s
+06:44:05 - Epoch 5700 | Loss: 0.289474 | C: 1.33 | HomeOwn: 20.7% | Enroll: 37.9% | Time: 93.3s
+06:44:07 - Epoch 5999 | Loss: 0.480638 | C: 1.32 | HomeOwn: 20.1% | Enroll: 31.2% | Time: 94.4s
+06:44:07 - 
+06:44:07 - ============================================================
+06:44:07 - TRAINING COMPLETE
+06:44:07 - Best loss: 0.199730
+06:44:07 - Total time: 1.6 minutes
+06:44:07 - ============================================================
+06:44:07 - Saved diagnostics: /Users/sir/malaysia_hank/outputs/stage4/stage4_diagnostics.png
+06:44:07 - 
+06:44:07 - ============================================================
+06:44:07 - STAGE 4 VALIDATION
+06:44:07 - ============================================================
+06:44:07 - Steady State (n=10000):
+06:44:07 -   Mean liquid assets:      RM 25
+06:44:07 -   Mean illiquid (EPF):     RM 100
+06:44:07 -   Mean mortgage debt:      RM 7
+06:44:07 -   Mean consumption:        RM 1.34
+06:44:07 -   Mean income:             RM 2.58
+06:44:07 -   Mean housing expenses:   RM 0.54
+06:44:07 -   Budget residual:         -0.0200
+06:44:07 - 
+06:44:07 - Housing Distribution:
+06:44:07 -   Rent:          80.8%
+06:44:07 -   Mortgage:      3.0%
+06:44:07 -   Outright:      16.2%
+06:44:07 -   ------------------------
+06:44:07 -   Homeownership: 19.2% (target: 80.0%)
+06:44:07 - 
+06:44:07 - Validation Checks:
+06:44:07 -   Budget residual < 0.1                    ✓ PASS
+06:44:07 -   Consumption positive                     ✓ PASS
+06:44:07 -   Homeownership > 50%                      ✗ FAIL
+06:44:07 -   Homeownership < 90%                      ✓ PASS
+06:44:07 - 
+06:44:07 - ⚠ SOME CHECKS FAILED - Review before proceeding
+06:44:07 - 
+06:44:07 - ============================================================
+06:44:07 - STAGE 4 COMPLETE
+06:44:07 - Finished: 2026-01-30 06:44:07
+06:44:07 - ============================================================
+06:44:07 - Outputs:
+06:44:07 -   - Model: /Users/sir/malaysia_hank/outputs/stage4/stage4_best.pt
+06:44:07 -   - History: /Users/sir/malaysia_hank/outputs/stage4/training_history.csv
+06:44:07 -   - Diagnostics: /Users/sir/malaysia_hank/outputs/stage4/stage4_diagnostics.png
+06:44:07 -   - Validation: /Users/sir/malaysia_hank/outputs/stage4/validation_results.json
+06:44:07 -   - Log: /Users/sir/malaysia_hank/outputs/stage4/training_log.txt
+06:44:07 - 
+06:44:07 - Next: Stage 5 - Add Geography module

@@ -1,0 +1,122 @@
+06:49:17 - Device: cpu
+06:49:17 - ============================================================
+06:49:17 - MALAYSIA HANK - STAGE 5: FULL MODEL
+06:49:17 - Started: 2026-01-30 06:49:17
+06:49:17 - ============================================================
+06:49:17 - 
+06:49:17 - Model parameters: 506,965
+06:49:17 - State space: ~650K+ states
+06:49:17 - 
+06:49:18 - ============================================================
+06:49:18 - STAGE 5: FULL MODEL WITH GEOGRAPHY
+06:49:18 - ============================================================
+06:49:18 - Parameters: 506,965
+06:49:18 - Epochs: 8000, Device: cpu
+06:49:18 - 
+06:49:18 - Geography System:
+06:49:18 -   States: 13
+06:49:18 -   Locations: 26 (Urban + Rural)
+06:49:18 -   Migration Cost: 0.5
+06:49:18 - 
+06:49:18 - Top Income Locations:
+06:49:18 -   KL Urban            : 1.80x
+06:49:18 -   Selangor Urban      : 1.60x
+06:49:18 -   Penang Urban        : 1.30x
+06:49:18 -   Johor Urban         : 1.45x
+06:49:18 - 
+06:49:18 - Epoch    0 | Loss: 56542.296875 | C: 1.34 | HomeOwn: 65.6% | KL: 18.6% | Time: 0.0s
+06:49:29 - Epoch  400 | Loss: 825.227661 | C: 1.14 | HomeOwn: 64.3% | KL: 17.6% | Time: 11.7s
+06:49:32 - Epoch  800 | Loss: 522.314270 | C: 1.10 | HomeOwn: 30.3% | KL: 18.2% | Time: 14.1s
+06:49:34 - Epoch 1200 | Loss: 293.553619 | C: 1.18 | HomeOwn: 18.9% | KL: 17.8% | Time: 16.6s
+06:49:37 - Epoch 1600 | Loss: 186.353012 | C: 1.18 | HomeOwn: 15.7% | KL: 17.6% | Time: 18.9s
+06:49:39 - Epoch 2000 | Loss: 121.336067 | C: 1.23 | HomeOwn: 15.0% | KL: 21.7% | Time: 21.2s
+06:49:41 - Epoch 2400 | Loss: 127.407867 | C: 1.24 | HomeOwn: 13.7% | KL: 18.2% | Time: 23.5s
+06:49:43 - Epoch 2800 | Loss: 93.817589 | C: 1.22 | HomeOwn: 14.0% | KL: 20.9% | Time: 25.8s
+06:49:46 - Epoch 3200 | Loss: 143.396606 | C: 1.24 | HomeOwn: 14.1% | KL: 19.9% | Time: 28.0s
+06:49:48 - Epoch 3600 | Loss: 81.760719 | C: 1.24 | HomeOwn: 13.1% | KL: 19.1% | Time: 30.3s
+06:49:50 - Epoch 4000 | Loss: 75.554581 | C: 1.26 | HomeOwn: 9.5% | KL: 16.8% | Time: 32.6s
+06:49:52 - Epoch 4400 | Loss: 45.885281 | C: 1.26 | HomeOwn: 9.3% | KL: 17.0% | Time: 34.8s
+06:49:55 - Epoch 4800 | Loss: 35.834400 | C: 1.29 | HomeOwn: 7.1% | KL: 19.9% | Time: 37.1s
+06:49:57 - Epoch 5200 | Loss: 35.809341 | C: 1.26 | HomeOwn: 7.4% | KL: 19.1% | Time: 39.4s
+06:49:59 - Epoch 5600 | Loss: 37.771194 | C: 1.26 | HomeOwn: 8.3% | KL: 17.4% | Time: 41.6s
+06:50:01 - Epoch 6000 | Loss: 32.129887 | C: 1.29 | HomeOwn: 6.7% | KL: 16.4% | Time: 43.9s
+06:50:04 - Epoch 6400 | Loss: 30.952175 | C: 1.30 | HomeOwn: 6.8% | KL: 17.4% | Time: 46.1s
+06:50:06 - Epoch 6800 | Loss: 23.862242 | C: 1.29 | HomeOwn: 7.0% | KL: 16.2% | Time: 48.4s
+06:50:08 - Epoch 7200 | Loss: 22.820585 | C: 1.30 | HomeOwn: 6.7% | KL: 14.8% | Time: 50.6s
+06:50:11 - Epoch 7600 | Loss: 21.300539 | C: 1.31 | HomeOwn: 7.0% | KL: 18.0% | Time: 52.9s
+06:50:13 - Epoch 7999 | Loss: 23.049282 | C: 1.32 | HomeOwn: 6.5% | KL: 17.4% | Time: 55.1s
+06:50:13 - 
+06:50:13 - ============================================================
+06:50:13 - TRAINING COMPLETE
+06:50:13 - Best loss: 16.514729
+06:50:13 - Total time: 0.9 minutes
+06:50:13 - ============================================================
+06:50:14 - Saved diagnostics: /Users/sir/malaysia_hank/outputs/stage5/stage5_diagnostics.png
+06:50:14 - 
+06:50:14 - ============================================================
+06:50:14 - STAGE 5 VALIDATION: FULL MODEL
+06:50:14 - ============================================================
+06:50:14 - Steady State (n=10000):
+06:50:14 -   Mean liquid assets:      RM 25
+06:50:14 -   Mean illiquid (EPF):     RM 100
+06:50:14 -   Mean consumption:        RM 1.32
+06:50:14 -   Mean income:             RM 3.19
+06:50:14 -   Budget residual:         -0.1254
+06:50:14 - 
+06:50:14 - Geographic Distribution:
+06:50:14 -   KL Urban:       18.0% (income mult: 1.80x)
+06:50:14 -   Selangor Urban: 14.8% (income mult: 1.60x)
+06:50:14 -   Penang Urban:   11.6% (income mult: 1.30x)
+06:50:14 - 
+06:50:14 - Mean Income by Location:
+06:50:14 -   KL Urban            : RM 4.79
+06:50:14 -   Selangor Urban      : RM 4.06
+06:50:14 -   Penang Urban        : RM 3.42
+06:50:14 -   Johor Urban         : RM 3.71
+06:50:14 - 
+06:50:14 - Policy Moments:
+06:50:14 -   Homeownership rate:      6.3%
+06:50:14 -   Tertiary enrollment:     34.3%
+06:50:14 - 
+06:50:14 - Validation Checks:
+06:50:14 -   Budget residual < 0.1                    ✗ FAIL
+06:50:14 -   Consumption positive                     ✓ PASS
+06:50:14 -   KL has highest income                    ✓ PASS
+06:50:14 -   Assets non-negative                      ✓ PASS
+06:50:14 - 
+06:50:14 - ============================================================
+06:50:14 - STAGE 5 COMPLETE - FULL MODEL READY
+06:50:14 - Finished: 2026-01-30 06:50:14
+06:50:14 - ============================================================
+06:50:14 - Outputs:
+06:50:14 -   - Model: /Users/sir/malaysia_hank/outputs/stage5/stage5_best.pt
+06:50:14 -   - History: /Users/sir/malaysia_hank/outputs/stage5/training_history.csv
+06:50:14 -   - Diagnostics: /Users/sir/malaysia_hank/outputs/stage5/stage5_diagnostics.png
+06:50:14 -   - Validation: /Users/sir/malaysia_hank/outputs/stage5/validation_results.json
+06:50:14 -   - Log: /Users/sir/malaysia_hank/outputs/stage5/training_log.txt
+06:50:14 - 
+06:50:14 - ✓ Malaysia Extended HANK Model Complete!
+06:56:35 - Device: cpu
+06:57:09 - Device: cpu
+07:01:07 - Device: cpu
+07:01:49 - Device: cpu
+16:51:49 - Device: cpu
+16:51:57 - Device: cpu
+16:58:11 - Device: cpu
+17:03:08 - Device: cpu
+17:03:18 - Device: cpu
+17:08:46 - Device: cpu
+17:09:16 - Device: cpu
+17:13:51 - Device: cpu
+17:14:36 - Device: cpu
+17:27:20 - Device: cpu
+17:34:28 - Device: cpu
+17:36:16 - Device: cpu
+17:41:02 - Device: cpu
+17:41:22 - Device: cpu
+17:51:57 - Device: cpu
+17:52:30 - Device: cpu
+17:52:35 - Device: cpu
+17:56:24 - Device: cpu
+17:56:31 - Device: cpu
+18:03:12 - Device: cpu

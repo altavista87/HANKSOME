@@ -1,0 +1,10 @@
+{
+  "n_agents": 10000,
+  "mean_liquid": 25.066036224365234,
+  "mean_illiquid": 99.2021484375,
+  "mean_consumption": 1.4509836435317993,
+  "mean_income": 1.862084150314331,
+  "mpc_ratio": 1.0034260749816895,
+  "consumption_std": 0.4672924280166626,
+  "budget_residual_mean": -0.025530368089675903
+}

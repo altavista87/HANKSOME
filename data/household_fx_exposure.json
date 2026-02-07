@@ -1,0 +1,32 @@
+{
+  "q1_poorest": {
+    "import_share": 0.45,
+    "food_share": 0.55,
+    "fuel_share": 0.08,
+    "usd_debt_share": 0.05
+  },
+  "q2": {
+    "import_share": 0.38,
+    "food_share": 0.48,
+    "fuel_share": 0.1,
+    "usd_debt_share": 0.08
+  },
+  "q3_middle": {
+    "import_share": 0.3,
+    "food_share": 0.4,
+    "fuel_share": 0.1,
+    "usd_debt_share": 0.12
+  },
+  "q4": {
+    "import_share": 0.25,
+    "food_share": 0.32,
+    "fuel_share": 0.09,
+    "usd_debt_share": 0.18
+  },
+  "q5_richest": {
+    "import_share": 0.2,
+    "food_share": 0.2,
+    "fuel_share": 0.06,
+    "usd_debt_share": 0.25
+  }
+}

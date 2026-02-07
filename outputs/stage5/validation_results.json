@@ -1,0 +1,13 @@
+{
+  "n_agents": 10000,
+  "mean_liquid": 24.962732315063477,
+  "mean_illiquid": 100.0716552734375,
+  "mean_consumption": 1.3174662590026855,
+  "mean_income": 3.190296173095703,
+  "budget_residual_mean": -0.12540747225284576,
+  "kl_share": 0.17990000545978546,
+  "selangor_share": 0.14790000021457672,
+  "penang_share": 0.11569999903440475,
+  "homeownership_rate": 0.06321483764648438,
+  "enrollment_rate": 0.34301599860191345
+}

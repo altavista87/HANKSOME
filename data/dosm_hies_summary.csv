@@ -1,0 +1,5 @@
+year,mean_monthly_income_rm,median_monthly_income_rm,mean_monthly_expenditure_rm,income_gini,poverty_rate,bottom40_income_share,top20_income_share
+2014,6141,4585,4024,0.401,0.6,16.8,46.6
+2016,6958,5228,4028,0.399,0.5,16.9,46.2
+2019,7791,5873,4837,0.407,5.6,16.0,47.9
+2022,8295,6242,5310,0.412,6.2,15.8,48.0

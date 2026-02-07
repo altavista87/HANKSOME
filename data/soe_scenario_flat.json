@@ -1,0 +1,16 @@
+{
+  "scenario": "flat",
+  "rationale": "No heterogeneity - sensitivity test",
+  "import_shares": {
+    "Q1": 0.3,
+    "Q2": 0.3,
+    "Q3": 0.3,
+    "Q4": 0.3,
+    "Q5": 0.3
+  },
+  "parameters": {
+    "exchange_rate_baseline": 4.75,
+    "pass_through": 0.45,
+    "r_foreign": 0.055
+  }
+}

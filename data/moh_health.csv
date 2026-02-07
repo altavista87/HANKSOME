@@ -1,0 +1,5 @@
+year,chronic_disease_prevalence,diabetes_prevalence,hypertension_prevalence,public_healthcare_utilization,private_healthcare_utilization,catastrophic_health_expenditure
+2011,15.0,11.6,32.7,65.0,35.0,12.0
+2015,18.0,13.4,30.3,63.0,37.0,14.0
+2019,24.0,18.3,30.0,62.0,38.0,16.0
+2022,26.0,19.9,29.0,60.0,40.0,18.0

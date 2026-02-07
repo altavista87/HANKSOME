@@ -1,0 +1,16 @@
+{
+  "scenario": "conservative",
+  "rationale": "\n            Q1 consumes local rice (SST 5%), local brands, informal services.\n            Can't afford imported goods. Import exposure increases through middle\n            class (Q3) as households upgrade to processed foods, then declines\n            for rich (Q5) as services share increases.\n            ",
+  "import_shares": {
+    "Q1": 0.22,
+    "Q2": 0.28,
+    "Q3": 0.32,
+    "Q4": 0.28,
+    "Q5": 0.25
+  },
+  "parameters": {
+    "exchange_rate_baseline": 4.75,
+    "pass_through": 0.45,
+    "r_foreign": 0.055
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "n_agents": 10000,
+  "mean_liquid": 25.0267276763916,
+  "mean_illiquid": 99.94498443603516,
+  "mean_consumption": 1.2966363430023193,
+  "mean_income": 2.6003952026367188,
+  "mean_health_exp": 0.4412573277950287,
+  "mpc_ratio": 0.7044524550437927,
+  "budget_residual_mean": 0.0005078887916170061,
+  "private_healthcare_rate": 0.8815000057220459,
+  "enrollment_rate_tertiary_young": 0.21288847923278809,
+  "income_ratio_disabled_healthy": 0.5182169007799284
+}

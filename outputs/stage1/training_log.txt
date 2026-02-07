@@ -1,0 +1,65 @@
+21:34:40 - Device: cpu
+21:34:40 - ============================================================
+21:34:40 - MALAYSIA HANK - STAGE 1 ENHANCED
+21:34:40 - Started: 2026-01-29 21:34:40
+21:34:40 - ============================================================
+21:34:41 - ============================================================
+21:34:41 - STAGE 1: TRAINING BASE HANK MODEL (Enhanced)
+21:34:41 - ============================================================
+21:34:41 - Parameters: 25,987
+21:34:41 - Epochs: 1000, Device: cpu
+21:34:41 - 
+21:34:41 - Epoch    0 | Loss: 68238.976562 | C: 1.42, L: 32.6, I: 145.4 | Time: 0.0s
+21:34:41 - Epoch  100 | Loss: 141.371490 | C: 1.22, L: 24.5, I: 110.7 | Time: 0.1s
+21:34:41 - Epoch  200 | Loss: 102.679268 | C: 1.24, L: 25.5, I: 109.4 | Time: 0.2s
+21:34:41 - Epoch  300 | Loss: 81.006950 | C: 1.22, L: 25.7, I: 104.9 | Time: 0.3s
+21:34:41 - Epoch  400 | Loss: 76.773155 | C: 1.27, L: 27.3, I: 106.5 | Time: 0.4s
+21:34:41 - Epoch  500 | Loss: 35.366371 | C: 1.29, L: 28.2, I: 97.5 | Time: 0.5s
+21:34:41 - Epoch  600 | Loss: 29.574488 | C: 1.37, L: 30.7, I: 103.2 | Time: 0.6s
+21:34:42 - Epoch  700 | Loss: 17.935486 | C: 1.37, L: 31.3, I: 95.6 | Time: 0.7s
+21:34:42 - Epoch  800 | Loss: 11.394929 | C: 1.47, L: 34.2, I: 101.4 | Time: 0.8s
+21:34:42 - Epoch  900 | Loss: 8.992425 | C: 1.48, L: 35.0, I: 99.6 | Time: 0.9s
+21:34:42 - Epoch  999 | Loss: 6.152951 | C: 1.49, L: 36.0, I: 100.6 | Time: 1.0s
+21:34:42 - 
+21:34:42 - ============================================================
+21:34:42 - TRAINING COMPLETE
+21:34:42 - Best loss: 3.908764
+21:34:42 - Total time: 0.0 minutes
+21:34:42 - ============================================================
+21:34:42 - Saved diagnostics: /Users/sir/malaysia_hank/outputs/stage1/stage1_diagnostics.png
+21:34:42 - 
+21:34:42 - ============================================================
+21:34:42 - STAGE 1 VALIDATION
+21:34:42 - ============================================================
+21:34:42 - Steady State (n=10000):
+21:34:42 -   Mean liquid assets:      RM 25
+21:34:42 -   Mean illiquid (EPF):     RM 99
+21:34:42 -   Total wealth:            RM 124
+21:34:42 -   Mean consumption:        RM 1.45
+21:34:42 -   Consumption/Income:      77.9%
+21:34:42 -   Approx MPC:              1.003
+21:34:42 -   Budget residual:         -0.0255
+21:34:42 - 
+21:34:42 - Data Targets:
+21:34:42 -   Income Gini:             0.412
+21:34:42 -   Household Debt/GDP:      0.863
+21:34:42 - 
+21:34:42 - Validation Checks:
+21:34:42 -   Budget residual < 0.1          ✓ PASS
+21:34:42 -   Consumption positive           ✓ PASS
+21:34:42 -   Assets non-negative            ✓ PASS
+21:34:42 -   MPC reasonable                 ✗ FAIL
+21:34:42 -   Consumption < Income           ✓ PASS
+21:34:42 - 
+21:34:42 - ⚠ SOME CHECKS FAILED - Review before proceeding
+21:34:42 - 
+21:34:42 - ============================================================
+21:34:42 - STAGE 1 COMPLETE
+21:34:42 - Finished: 2026-01-29 21:34:42
+21:34:42 - ============================================================
+21:34:42 - Outputs:
+21:34:42 -   - Model: /Users/sir/malaysia_hank/outputs/stage1/stage1_best.pt
+21:34:42 -   - History: /Users/sir/malaysia_hank/outputs/stage1/training_history.csv
+21:34:42 -   - Diagnostics: /Users/sir/malaysia_hank/outputs/stage1/stage1_diagnostics.png
+21:34:42 -   - Validation: /Users/sir/malaysia_hank/outputs/stage1/validation_results.json
+21:34:42 -   - Log: /Users/sir/malaysia_hank/outputs/stage1/training_log.txt

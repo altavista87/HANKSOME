@@ -1,0 +1,187 @@
+{
+  "tradeoff": {
+    "passive": {
+      "name": "PASSIVE",
+      "description": "Hold OPR, let Ringgit adjust",
+      "fx_impacts": {
+        "Q1": -1.4079735765768042,
+        "Q2": -1.7851116700178693,
+        "Q3": -2.034938205821857,
+        "Q4": -1.7851116700178693,
+        "Q5": -1.5969039752897207
+      },
+      "opr_impacts": {
+        "Q1": -0.0,
+        "Q2": -0.0,
+        "Q3": -0.0,
+        "Q4": -0.0,
+        "Q5": -0.0
+      },
+      "final_impacts": {
+        "Q1": -1.4079735765768042,
+        "Q2": -1.7851116700178693,
+        "Q3": -2.034938205821857,
+        "Q4": -1.7851116700178693,
+        "Q5": -1.5969039752897207
+      },
+      "aggregate_impact": -1.722007819544824,
+      "poverty_rate": 0.3059999942779541,
+      "poverty_change_pp": -10.140001773834229,
+      "mean_income_rm": 3230.9609375,
+      "er_defense": 0.0,
+      "opr_hike_bps": 0.0,
+      "food_subsidy": 0.0
+    },
+    "defend_fx_50": {
+      "name": "DEFEND FX (50bps)",
+      "description": "Hike OPR 50bps, partial ER defense",
+      "fx_impacts": {
+        "Q1": -0.7039867882884021,
+        "Q2": -0.8925558350089347,
+        "Q3": -1.0174691029109284,
+        "Q4": -0.8925558350089347,
+        "Q5": -0.7984519876448604
+      },
+      "opr_impacts": {
+        "Q1": -0.25,
+        "Q2": -0.35,
+        "Q3": -0.45000000000000007,
+        "Q4": -0.55,
+        "Q5": -0.65
+      },
+      "final_impacts": {
+        "Q1": -0.9539867882884021,
+        "Q2": -1.2425558350089347,
+        "Q3": -1.4674691029109286,
+        "Q4": -1.4425558350089347,
+        "Q5": -1.4484519876448605
+      },
+      "aggregate_impact": -1.311003909772412,
+      "poverty_rate": 0.2709999978542328,
+      "poverty_change_pp": -13.64000141620636,
+      "mean_income_rm": 3414.73681640625,
+      "er_defense": 0.5,
+      "opr_hike_bps": 50.0,
+      "food_subsidy": 0.0
+    },
+    "defend_fx_100": {
+      "name": "DEFEND FX (100bps)",
+      "description": "Hike OPR 100bps, full ER defense",
+      "fx_impacts": {
+        "Q1": -0.0,
+        "Q2": -0.0,
+        "Q3": -0.0,
+        "Q4": -0.0,
+        "Q5": -0.0
+      },
+      "opr_impacts": {
+        "Q1": -0.5,
+        "Q2": -0.7,
+        "Q3": -0.9000000000000001,
+        "Q4": -1.1,
+        "Q5": -1.3
+      },
+      "final_impacts": {
+        "Q1": -0.5,
+        "Q2": -0.7,
+        "Q3": -0.9000000000000001,
+        "Q4": -1.1,
+        "Q5": -1.3
+      },
+      "aggregate_impact": -0.9,
+      "poverty_rate": 0.17139999568462372,
+      "poverty_change_pp": -23.600001633167267,
+      "mean_income_rm": 3998.855224609375,
+      "er_defense": 1.0,
+      "opr_hike_bps": 100.0,
+      "food_subsidy": 0.0
+    },
+    "defend_q1": {
+      "name": "DEFEND Q1",
+      "description": "Hike OPR 50bps + 20% food subsidy for Q1",
+      "fx_impacts": {
+        "Q1": -0.7039867882884021,
+        "Q2": -0.8925558350089347,
+        "Q3": -1.0174691029109284,
+        "Q4": -0.8925558350089347,
+        "Q5": -0.7984519876448604
+      },
+      "opr_impacts": {
+        "Q1": -0.25,
+        "Q2": -0.35,
+        "Q3": -0.45000000000000007,
+        "Q4": -0.55,
+        "Q5": -0.65
+      },
+      "final_impacts": {
+        "Q1": 19.046013211711596,
+        "Q2": -1.2425558350089347,
+        "Q3": -1.4674691029109286,
+        "Q4": -1.4425558350089347,
+        "Q5": -1.4484519876448605
+      },
+      "aggregate_impact": 2.688996090227587,
+      "poverty_rate": 0.15760000050067902,
+      "poverty_change_pp": -24.980001151561737,
+      "mean_income_rm": 4104.26220703125,
+      "er_defense": 0.5,
+      "opr_hike_bps": 50.0,
+      "food_subsidy": 0.2
+    }
+  },
+  "frontier": {
+    "er_defense": {
+      "20": 1.0
+    },
+    "opr_hike_bps": {
+      "20": 0.0
+    },
+    "depreciation": {
+      "20": 0.0
+    },
+    "q1_impact": {
+      "20": -0.0
+    },
+    "policy": {
+      "20": "D100_O0"
+    }
+  },
+  "subsidy": {
+    "none": {
+      "name": "No Subsidy",
+      "target": null,
+      "rate": 0.0,
+      "q1_impact": -1.4079735765768042,
+      "poverty_reduction_pp": -0.007039867882884021,
+      "cost_pct_gdp": 0,
+      "cost_per_poverty_pp": 0.0
+    },
+    "universal_10": {
+      "name": "Universal 10%",
+      "target": "all",
+      "rate": 0.1,
+      "q1_impact": 8.592026423423196,
+      "poverty_reduction_pp": 0.04296013211711598,
+      "cost_pct_gdp": 3.0,
+      "cost_per_poverty_pp": 300.0
+    },
+    "q1_30": {
+      "name": "Q1 Targeted 30%",
+      "target": "Q1",
+      "rate": 0.3,
+      "q1_impact": 28.592026423423196,
+      "poverty_reduction_pp": 0.14296013211711597,
+      "cost_pct_gdp": 1.7999999999999998,
+      "cost_per_poverty_pp": 179.99999999999997
+    },
+    "b40_20": {
+      "name": "B40 Targeted 20%",
+      "target": "B40",
+      "rate": 0.2,
+      "q1_impact": 18.592026423423196,
+      "poverty_reduction_pp": 0.09296013211711598,
+      "cost_pct_gdp": 2.4,
+      "cost_per_poverty_pp": 240.0
+    }
+  }
+}

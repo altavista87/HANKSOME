@@ -1,0 +1,14 @@
+{
+  "n_agents": 10000,
+  "mean_liquid": 25.20914649963379,
+  "mean_illiquid": 100.16402435302734,
+  "mean_mortgage": 7.256592273712158,
+  "mean_consumption": 1.336564302444458,
+  "mean_income": 2.5819709300994873,
+  "mean_housing_exp": 0.5364604592323303,
+  "budget_residual_mean": -0.020006408914923668,
+  "rent_share": 0.8077419996261597,
+  "mortgage_share": 0.02981894463300705,
+  "outright_share": 0.1624390184879303,
+  "homeownership_rate": 0.19225797057151794
+}

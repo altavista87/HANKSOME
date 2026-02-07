@@ -1,0 +1,18 @@
+{
+  "household_debt_gdp": 0.863,
+  "housing_loan_share": 0.62,
+  "income_gini": 0.412,
+  "median_income_rm": 6242.0,
+  "formal_share": 0.64,
+  "informal_share": 0.28,
+  "public_share": 0.08,
+  "unemployment_rate": 0.034,
+  "epf_average_savings": 73800.0,
+  "epf_median_age_54": 52000.0,
+  "homeownership_rate": 0.8,
+  "median_house_price": 340000.0,
+  "chronic_disease_rate": 0.26,
+  "public_healthcare_share": 0.6,
+  "opr_rate": 0.03,
+  "epf_return": 0.063
+}

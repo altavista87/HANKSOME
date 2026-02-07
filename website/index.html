@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EngramHANK.jl | Citizen Science HANK Models</title>
+    <meta name="description" content="A citizen science project exploring HANK models and their distributional effects on real people. Built by a concerned citizen, open for collaboration.">
+    <meta name="author" content="altavista87">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        primary: '#1e3a5f',
+                        secondary: '#2c5282',
+                        accent: '#3182ce',
+                        citizen: '#059669',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #1e3a5f 0%, #3182ce 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #2c5282 100%);
+        }
+        .code-block {
+            background: #1e293b;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+        }
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold gradient-text">EngramHANK.jl</span>
+                    <span class="ml-2 px-2 py-1 text-xs font-semibold bg-green-100 text-green-800 rounded">
+                        <i class="fas fa-flask mr-1"></i>CITIZEN SCIENCE
+                    </span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="#about" class="text-gray-600 hover:text-primary hidden md:block">About</a>
+                    <a href="#why-hank" class="text-gray-600 hover:text-primary hidden md:block">Why HANK?</a>
+                    <a href="#future" class="text-gray-600 hover:text-primary hidden md:block">Future Research</a>
+                    <a href="#malaysia" class="text-gray-600 hover:text-primary">Malaysia</a>
+                    <a href="https://github.com/altavista87/HANKSOME_MoE_v4" class="text-gray-600 hover:text-primary">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="./chat/index.html" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary transition">
+                        <i class="fas fa-robot mr-2"></i>Ask AI
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Citizen Science Banner -->
+            <div class="bg-white/10 backdrop-blur rounded-lg p-4 mb-8 inline-flex items-center">
+                <i class="fas fa-info-circle mr-2 text-green-300"></i>
+                <span class="text-sm">A citizen science project exploring how economic shocks affect real people differently</span>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                        Understanding Economic Shocks Through <span class="text-blue-300">Citizen Science</span>
+                    </h1>
+                    <p class="text-lg text-gray-300 mb-6">
+                        I'm not an economist — I'm a concerned citizen fascinated by how <strong>HANK models</strong> reveal what traditional models miss: <em>who</em> gets hurt by economic shocks, not just <em>how much</em>.
+                    </p>
+                    <p class="text-gray-400 mb-8">
+                        This open-source project applies cutting-edge computational methods to Malaysian economic data (2008-2025) as a learning exercise in reproducible research.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-3">
+                        <a href="https://github.com/altavista87/HANKSOME_MoE_v4" class="bg-accent text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-600 transition text-sm">
+                            <i class="fab fa-github mr-2"></i>View Code
+                        </a>
+                        <a href="./malaysia/index.html" class="bg-white text-gray-900 px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-100 transition text-sm">
+                            <i class="fas fa-chart-line mr-2"></i>Malaysian Analysis
+                        </a>
+                        <a href="#about" class="border border-white text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-white/10 transition text-sm">
+                            My Story
+                        </a>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-4 mt-10">
+                        <div class="bg-white/10 backdrop-blur rounded-lg p-4 text-center">
+                            <div class="text-2xl font-bold text-blue-300">20</div>
+                            <div class="text-xs text-gray-400">Shocks Analyzed</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur rounded-lg p-4 text-center">
+                            <div class="text-2xl font-bold text-blue-300">48%</div>
+                            <div class="text-xs text-gray-400">Peak Impact</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur rounded-lg p-4 text-center">
+                            <div class="text-2xl font-bold text-blue-300">1500×</div>
+                            <div class="text-xs text-gray-400">Speedup</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Code Preview -->
+                <div class="code-block text-gray-300">
+                    <div class="flex items-center mb-3">
+                        <div class="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
+                        <div class="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
+                        <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                        <span class="text-xs text-gray-500 ml-2">julia</span>
+                    </div>
+                    <pre><code><span class="text-gray-500"># A citizen scientist's approach to HANK models</span>
+
+<span class="text-purple-400">using</span> EngramHANK
+
+<span class="text-gray-500"># Calibrate to Malaysian data</span>
+params = <span class="text-yellow-400">krusell_smith_params</span>(
+    β=<span class="text-green-400">0.965</span>,    <span class="text-gray-500"># Savings culture</span>
+    σ=<span class="text-green-400">1.5</span>,      <span class="text-gray-500"># Risk aversion</span>
+    na=<span class="text-green-400">150</span>,     <span class="text-gray-500"># Asset grid</span>
+    ny=<span class="text-green-400">7</span>        <span class="text-gray-500"># Income states</span>
+)
+
+<span class="text-gray-500"># What happens when tourism collapses?</span>
+result = <span class="text-yellow-400">solve_engram_hank</span>(
+    params, <span class="text-green-400">100</span>;
+    shock=<span class="text-green-400">:tourism_shock</span>
+)
+
+<span class="text-gray-500"># See who gets hurt, not just GDP</span></code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section with Profile Picture -->
+    <section id="about" class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">A Citizen Science Journey</h2>
+                
+                <!-- Profile Picture -->
+                <div class="mb-6">
+                    <img src="./images/profile.jpg" alt="altavista87 - Citizen Scientist" class="profile-img mx-auto">
+                    <p class="text-gray-500 text-sm mt-3">altavista87 — Concerned Citizen & Learner</p>
+                </div>
+            </div>
+            
+            <div class="bg-blue-50 border-l-4 border-primary p-6 rounded-r-lg mb-8">
+                <p class="text-gray-700 italic text-lg">
+                    "I started this project to understand why traditional macroeconomic models often miss what actually happens to real people during economic shocks. HANK models opened my eyes to how monetary policy affects different income groups differently — something the representative agent approach simply cannot capture."
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-user-graduate text-primary text-xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Not an Economist</h3>
+                    <p class="text-gray-600 text-sm">I'm a citizen scientist learning computational economics through hands-on implementation. This is a learning project, not expert research.</p>
+                </div>
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-code-branch text-green-600 text-xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Open & Reproducible</h3>
+                    <p class="text-gray-600 text-sm">All code, data, and assumptions are public. Anyone can run the same analysis. Mistakes are documented and corrected transparently.</p>
+                </div>
+                <div class="p-6">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-hands-helping text-purple-600 text-xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Collaborative</h3>
+                    <p class="text-gray-600 text-sm">I welcome feedback from trained economists. This project improves through community input and peer review.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why HANK Section -->
+    <section id="why-hank" class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Why HANK Models Matter</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Traditional models treat everyone as the same "representative agent." HANK models show us the reality: economic shocks hit the poor and rich very differently.
+                </p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-primary text-white">
+                            <tr>
+                                <th class="px-6 py-4 text-left">Aspect</th>
+                                <th class="px-6 py-4 text-left">RANK (Traditional)</th>
+                                <th class="px-6 py-4 text-left">HANK (Heterogeneous)</th>
+                                <th class="px-6 py-4 text-left">Why It Matters</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y">
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium">Households</td>
+                                <td class="px-6 py-4 text-gray-600">One "representative" agent</td>
+                                <td class="px-6 py-4 text-green-700 font-medium">Thousands of actual households</td>
+                                <td class="px-6 py-4 text-gray-600 text-sm">Real people have different jobs, savings, debt</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium">Policy Effects</td>
+                                <td class="px-6 py-4 text-gray-600">Same for everyone</td>
+                                <td class="px-6 py-4 text-green-700 font-medium">Depends on income/wealth</td>
+                                <td class="px-6 py-4 text-gray-600 text-sm">Rate hikes hurt the poor more than the rich</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium">Transmission</td>
+                                <td class="px-6 py-4 text-gray-600">Simplified</td>
+                                <td class="px-6 py-4 text-green-700 font-medium">Through household balance sheets</td>
+                                <td class="px-6 py-4 text-gray-600 text-sm">Shows <em>who</em> gets hurt, not just <em>how much</em></td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium">Shock Impact</td>
+                                <td class="px-6 py-4 text-gray-600">Aggregate only</td>
+                                <td class="px-6 py-4 text-green-700 font-medium">Distributional</td>
+                                <td class="px-6 py-4 text-gray-600 text-sm">Floods hit farmers differently than bankers</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Research Interests -->
+    <section id="future" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Future Research Interests</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    This project is the beginning of a longer journey. These are the areas I hope to explore next.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 1. Ageing Nation -->
+                <div class="feature-card bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-xl border border-blue-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-users text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">1. Ageing Nation</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Malaysia is transitioning to an ageing society (projected 14% elderly by 2030). How do HANK models capture:
+                    </p>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i>Intergenerational wealth transfer pressures</li>
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i>Healthcare cost burdens on working-age households</li>
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i>Retirement adequacy across income distributions</li>
+                        <li><i class="fas fa-check text-blue-500 mr-2"></i>Fiscal sustainability of pension systems</li>
+                    </ul>
+                </div>
+
+                <!-- 2. Gig Economy -->
+                <div class="feature-card bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-xl border border-green-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-briefcase text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">2. Gig Economy</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        The informal sector already represents 32% of Malaysian employment. Key questions:
+                    </p>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Income volatility effects on consumption smoothing</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Lack of social protection during economic shocks</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Platform economy vs traditional employment dynamics</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Policy tools for precarious workers</li>
+                    </ul>
+                </div>
+
+                <!-- 3. Education & Healthcare -->
+                <div class="feature-card bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-xl border border-purple-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-graduation-cap text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">3. Education & Healthcare</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        How can public investment in human capital close the inequality gap?
+                    </p>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li><i class="fas fa-check text-purple-500 mr-2"></i>Education quality gradients across income levels</li>
+                        <li><i class="fas fa-check text-purple-500 mr-2"></i>Healthcare access as human capital investment</li>
+                        <li><i class="fas fa-check text-purple-500 mr-2"></i>Returns to education in heterogeneous agent settings</li>
+                        <li><i class="fas fa-check text-purple-500 mr-2"></i>Universal healthcare as automatic stabilizer</li>
+                    </ul>
+                </div>
+
+                <!-- 4. AI Nation -->
+                <div class="feature-card bg-gradient-to-br from-orange-50 to-amber-50 p-8 rounded-xl border border-orange-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-robot text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">4. AI Nation</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Malaysia's aspiration to become an AI hub has distributional implications:
+                    </p>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li><i class="fas fa-check text-orange-500 mr-2"></i>Automation risk across skill levels</li>
+                        <li><i class="fas fa-check text-orange-500 mr-2"></i>AI augmentation vs AI replacement effects</li>
+                        <li><i class="fas fa-check text-orange-500 mr-2"></i>Digital infrastructure divide (urban vs rural)</li>
+                        <li><i class="fas fa-check text-orange-500 mr-2"></i>New tax bases for automated economies</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-10 text-center">
+                <div class="bg-gray-50 rounded-xl p-6 inline-block">
+                    <p class="text-gray-700">
+                        <i class="fas fa-handshake text-primary mr-2"></i>
+                        <strong>Collaboration Welcome:</strong> If you're researching any of these areas, I'd love to connect on GitHub and potentially extend EngramHANK to address these questions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Malaysia Section -->
+    <section id="malaysia" class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-primary font-semibold text-sm">CASE STUDY</span>
+                    <h2 class="text-3xl font-bold text-gray-900 mt-2 mb-4">
+                        What I Learned About Malaysia's Economy
+                    </h2>
+                    <p class="text-gray-600 mb-6">
+                        As a Malaysian citizen, I wanted to understand how my own country's economy responds to shocks. This analysis of <strong>20 major economic events</strong> (2008-2025) revealed surprising patterns.
+                    </p>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start p-4 bg-red-50 rounded-lg border-l-4 border-red-500">
+                            <div class="font-bold text-red-600 mr-3">48%</div>
+                            <div>
+                                <div class="font-semibold">Tourism Collapse (2020-2022)</div>
+                                <p class="text-sm text-gray-600">Our economy is dangerously dependent on one sector. When borders closed, the pain was immediate and severe — 3× worse than the Global Financial Crisis.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-4 bg-orange-50 rounded-lg border-l-4 border-orange-500">
+                            <div class="font-bold text-orange-600 mr-3">15%</div>
+                            <div>
+                                <div class="font-semibold">GFC (2008-2009)</div>
+                                <p class="text-sm text-gray-600">External demand shocks are our Achilles' heel. What happens in China/USA directly hits Malaysian workers.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-500">
+                            <div class="font-bold text-yellow-600 mr-3">17q</div>
+                            <div>
+                                <div class="font-semibold">Gig Economy Volatility</div>
+                                <p class="text-sm text-gray-600">The "new economy" brings volatility lasting 4+ years. This isn't captured in traditional statistics.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="./malaysia/index.html" class="inline-flex items-center bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-secondary transition">
+                        Explore Full Analysis
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-lg font-semibold mb-4">Peak Output Impact by Shock</h3>
+                    <canvas id="heroChart" height="300"></canvas>
+                    <p class="text-xs text-gray-500 mt-3">
+                        Data source: EngramHANK model calibrated to BNM, DOSM, WID data. 
+                        <a href="#" class="text-primary">See methodology →</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Limitations Section -->
+    <section class="py-16 bg-amber-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-start">
+                <div class="flex-shrink-0">
+                    <i class="fas fa-exclamation-triangle text-amber-500 text-2xl"></i>
+                </div>
+                <div class="ml-4">
+                    <h2 class="text-xl font-bold text-gray-900 mb-3">Important Limitations</h2>
+                    <p class="text-gray-700 mb-4">
+                        Please interpret these results appropriately. This is a learning project with known limitations:
+                    </p>
+                    <ul class="space-y-2 text-gray-600 text-sm">
+                        <li><strong>Author background:</strong> I am not a trained economist. This is citizen science, not expert research.</li>
+                        <li><strong>Model simplifications:</strong> No firm heterogeneity, simplified income process, closed economy assumptions.</li>
+                        <li><strong>Data estimates:</strong> Some shock magnitudes estimated from public reports rather than microdata.</li>
+                        <li><strong>Not for policy:</strong> Results are illustrative and exploratory. Do not use for actual policy decisions without expert validation.</li>
+                    </ul>
+                    <p class="text-gray-600 text-sm mt-4">
+                        <a href="#" class="text-primary font-medium">See full limitations →</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-primary text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-4">Explore, Learn, Collaborate</h2>
+            <p class="text-lg opacity-90 mb-8">
+                This project is open for reproduction, improvement, and collaboration. 
+                Whether you're an economist, developer, or fellow citizen scientist — your input is welcome.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://github.com/altavista87/HANKSOME_MoE_v4" class="bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+                    <i class="fab fa-github mr-2"></i>View on GitHub
+                </a>
+                <a href="./chat/index.html" class="border border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition">
+                    <i class="fas fa-robot mr-2"></i>Ask the AI
+                </a>
+                <a href="https://github.com/altavista87/HANKSOME_MoE_v4/discussions" class="border border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition">
+                    <i class="fas fa-comments mr-2"></i>Join Discussion
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">EngramHANK.jl</h3>
+                    <p class="text-gray-400 text-sm">
+                        A citizen science project exploring economic modeling with open code and reproducible research.
+                    </p>
+                    <p class="text-gray-500 text-sm mt-2">
+                        by <a href="https://github.com/altavista87" class="text-blue-400 hover:text-blue-300">altavista87</a>
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Explore</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="./malaysia/index.html" class="hover:text-white">Malaysian Analysis</a></li>
+                        <li><a href="./chat/index.html" class="hover:text-white">AI Assistant</a></li>
+                        <li><a href="https://github.com/altavista87/HANKSOME_MoE_v4/tree/main/examples" class="hover:text-white">Examples</a></li>
+                        <li><a href="#future" class="hover:text-white">Future Research</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="https://github.com/altavista87/HANKSOME_MoE_v4" class="hover:text-white">GitHub Repository</a></li>
+                        <li><a href="https://github.com/altavista87/HANKSOME_MoE_v4/issues" class="hover:text-white">Report Issues</a></li>
+                        <li><a href="https://github.com/altavista87/HANKSOME_MoE_v4/blob/main/CONTRIBUTING.md" class="hover:text-white">Contribute</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/altavista87" class="text-gray-400 hover:text-white text-xl">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-500 text-sm mt-4">
+                        Communication through GitHub Issues and Discussions.
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-500">
+                <p>MIT License • Independent Citizen Science Project • Not Peer-Reviewed</p>
+                <p class="mt-1">Built with curiosity by a concerned citizen • 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const ctx = document.getElementById('heroChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Tourism', 'GFC', 'Russia-Ukr', 'COVID', 'Supply Chain', 'Tech Rebound'],
+                datasets: [{
+                    label: 'Peak Output Impact (%)',
+                    data: [48, 15, 10, 9.6, 9.6, 5],
+                    backgroundColor: [
+                        'rgba(239, 68, 68, 0.8)',
+                        'rgba(245, 158, 11, 0.8)',
+                        'rgba(245, 158, 11, 0.8)',
+                        'rgba(245, 158, 11, 0.8)',
+                        'rgba(245, 158, 11, 0.8)',
+                        'rgba(34, 197, 94, 0.8)'
+                    ],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true, title: { display: true, text: 'Impact (%)' } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
