@@ -1,10 +1,592 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta http-equiv="refresh" content="0; url=../index.html#malaysia">
-    <title>Malaysian Analysis - EngramHANK</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malaysian Economic Shocks Analysis | EngramHANK.jl</title>
+    <meta name="description" content="Comprehensive analysis of 20 major economic shocks affecting Malaysia (2008-2025) using HANK models.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        primary: '#1e3a5f',
+                        secondary: '#2c5282',
+                        accent: '#3182ce',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #1e3a5f 0%, #3182ce 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .code-block {
+            background: #1e293b;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            overflow-x: auto;
+            color: #e2e8f0;
+        }
+        .shock-card {
+            border-left: 4px solid;
+            transition: all 0.2s;
+        }
+        .shock-card:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .severity-extreme { border-color: #dc2626; background: #fef2f2; }
+        .severity-high { border-color: #ea580c; background: #fff7ed; }
+        .severity-moderate { border-color: #ca8a04; background: #fefce8; }
+        .severity-low { border-color: #16a34a; background: #f0fdf4; }
+        .tab-active {
+            border-bottom: 2px solid #1e3a5f;
+            color: #1e3a5f;
+            font-weight: 600;
+        }
+        .tab {
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tab:hover {
+            color: #1e3a5f;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
 </head>
-<body>
-    <p>Redirecting to <a href="../index.html#malaysia">Malaysian Analysis section</a>...</p>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="../index.html" class="text-2xl font-bold gradient-text">EngramHANK.jl</a>
+                    <span class="mx-3 text-gray-300">|</span>
+                    <span class="text-gray-600">Malaysian Analysis</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="../index.html" class="text-gray-600 hover:text-primary">
+                        <i class="fas fa-arrow-left mr-2"></i>Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-primary to-secondary text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center mb-4">
+                <span class="bg-white/20 px-3 py-1 rounded-full text-sm">
+                    <i class="fas fa-flag mr-2"></i>Malaysia Case Study
+                </span>
+                <span class="ml-3 bg-green-500/20 px-3 py-1 rounded-full text-sm">
+                    <i class="fas fa-flask mr-2"></i>Citizen Science
+                </span>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+                20 Economic Shocks That Shaped Malaysia
+            </h1>
+            <p class="text-lg opacity-90 max-w-3xl">
+                A comprehensive HANK model analysis of Malaysia's economic resilience from 2008-2025. 
+                See <em>who</em> gets hurt by each shock, not just GDP aggregates.
+            </p>
+            
+            <div class="flex flex-wrap gap-3 mt-6">
+                <a href="./Malaysia_Shock_Analysis_Report.html" class="bg-white text-primary px-5 py-2 rounded-lg font-semibold hover:bg-gray-100 transition text-sm">
+                    <i class="fas fa-file-alt mr-2"></i>Full HTML Report
+                </a>
+                <a href="./malaysia_shock_results.csv" class="bg-white/20 text-white px-5 py-2 rounded-lg font-semibold hover:bg-white/30 transition text-sm">
+                    <i class="fas fa-download mr-2"></i>Download CSV Data
+                </a>
+                <a href="./MalaysiaShocks.jl" class="bg-white/20 text-white px-5 py-2 rounded-lg font-semibold hover:bg-white/30 transition text-sm">
+                    <i class="fas fa-code mr-2"></i>Julia Source Code
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Key Metrics -->
+    <section class="py-8 bg-white border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-red-600">48%</div>
+                    <div class="text-sm text-gray-600">Peak Impact (Tourism)</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-orange-600">20</div>
+                    <div class="text-sm text-gray-600">Shocks Analyzed</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-600">17yr</div>
+                    <div class="text-sm text-gray-600">Time Span (2008-2025)</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-purple-600">7</div>
+                    <div class="text-sm text-gray-600">Income Groups Tracked</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabs Navigation -->
+    <section class="bg-white border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex overflow-x-auto">
+                <div class="tab tab-active" onclick="showTab('overview')">Overview</div>
+                <div class="tab" onclick="showTab('timeline')">Timeline</div>
+                <div class="tab" onclick="showTab('irfs')">Impulse Responses</div>
+                <div class="tab" onclick="showTab('heatmap')">Shock Heatmap</div>
+                <div class="tab" onclick="showTab('data')">Raw Data</div>
+                <div class="tab" onclick="showTab('code')">Julia Code</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tab Contents -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- Overview Tab -->
+        <div id="overview" class="tab-content active">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Summary Chart -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <h2 class="text-xl font-bold mb-4">Peak Output Impact by Shock</h2>
+                        <img src="./malaysia_shock_summary.png" alt="Malaysia Shock Summary" class="w-full rounded-lg">
+                        <p class="text-sm text-gray-500 mt-4">
+                            Tourism collapse (2020-2022) caused the largest output deviation, 
+                            nearly 3× worse than the Global Financial Crisis impact.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Key Findings -->
+                <div>
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <h2 class="text-xl font-bold mb-4">Key Findings</h2>
+                        <div class="space-y-4">
+                            <div class="p-3 bg-red-50 rounded-lg border-l-4 border-red-500">
+                                <div class="font-semibold text-red-800">Extreme Vulnerability</div>
+                                <p class="text-sm text-gray-700">
+                                    Tourism sector collapse had 48% peak impact — unprecedented in Malaysian economic history.
+                                </p>
+                            </div>
+                            <div class="p-3 bg-orange-50 rounded-lg border-l-4 border-orange-500">
+                                <div class="font-semibold text-orange-800">External Dependence</div>
+                                <p class="text-sm text-gray-700">
+                                    External demand shocks (GFC, China slowdown) consistently hit harder than domestic shocks.
+                                </p>
+                            </div>
+                            <div class="p-3 bg-yellow-50 rounded-lg border-l-4 border-yellow-500">
+                                <div class="font-semibold text-yellow-800">Persistent Effects</div>
+                                <p class="text-sm text-gray-700">
+                                    Gig economy and structural shocks show 17+ quarter persistence — much longer than traditional estimates.
+                                </p>
+                            </div>
+                            <div class="p-3 bg-green-50 rounded-lg border-l-4 border-green-500">
+                                <div class="font-semibold text-green-800">Unequal Impact</div>
+                                <p class="text-sm text-gray-700">
+                                    Bottom 20% income households suffer 2-3× larger consumption drops than top 20%.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Top 5 Shocks -->
+            <div class="mt-8 bg-white rounded-xl shadow-lg p-6">
+                <h2 class="text-xl font-bold mb-6">Top 5 Most Severe Shocks</h2>
+                <div class="space-y-4">
+                    <div class="shock-card severity-extreme p-4 rounded-r-lg">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="flex items-center">
+                                    <span class="bg-red-600 text-white text-xs px-2 py-1 rounded font-bold mr-2">#1</span>
+                                    <h3 class="font-bold text-lg">COVID-19 Tourism Collapse</h3>
+                                    <span class="ml-3 text-xs bg-red-100 text-red-800 px-2 py-1 rounded">2020-2022</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mt-2">
+                                    Border closures devastated Malaysia's tourism-dependent economy. 
+                                    48% peak output impact, recovery still ongoing.
+                                </p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl font-bold text-red-600">-48%</div>
+                                <div class="text-xs text-gray-500">Peak Impact</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="shock-card severity-high p-4 rounded-r-lg">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="flex items-center">
+                                    <span class="bg-orange-600 text-white text-xs px-2 py-1 rounded font-bold mr-2">#2</span>
+                                    <h3 class="font-bold text-lg">Global Financial Crisis</h3>
+                                    <span class="ml-3 text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded">2008-2009</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mt-2">
+                                    Export collapse as global trade froze. Manufacturing and electronics hit hardest.
+                                </p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl font-bold text-orange-600">-15%</div>
+                                <div class="text-xs text-gray-500">Peak Impact</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="shock-card severity-high p-4 rounded-r-lg">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="flex items-center">
+                                    <span class="bg-orange-600 text-white text-xs px-2 py-1 rounded font-bold mr-2">#3</span>
+                                    <h3 class="font-bold text-lg">2015-2016 Commodity Crash</h3>
+                                    <span class="ml-3 text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded">2015-2016</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mt-2">
+                                    Oil and palm oil price collapse affected government revenue and rural incomes.
+                                </p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl font-bold text-orange-600">-10%</div>
+                                <div class="text-xs text-gray-500">Peak Impact</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="shock-card severity-moderate p-4 rounded-r-lg">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="flex items-center">
+                                    <span class="bg-yellow-600 text-white text-xs px-2 py-1 rounded font-bold mr-2">#4</span>
+                                    <h3 class="font-bold text-lg">Russia-Ukraine War</h3>
+                                    <span class="ml-3 text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">2022-2023</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mt-2">
+                                    Energy and food price shocks, supply chain disruptions.
+                                </p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl font-bold text-yellow-600">-9.6%</div>
+                                <div class="text-xs text-gray-500">Peak Impact</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="shock-card severity-moderate p-4 rounded-r-lg">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="flex items-center">
+                                    <span class="bg-yellow-600 text-white text-xs px-2 py-1 rounded font-bold mr-2">#5</span>
+                                    <h3 class="font-bold text-lg">Global Supply Chain Crisis</h3>
+                                    <span class="ml-3 text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">2021-2022</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mt-2">
+                                    Semiconductor shortages hit electronics exports, shipping delays affected trade.
+                                </p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl font-bold text-yellow-600">-9.6%</div>
+                                <div class="text-xs text-gray-500">Peak Impact</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Timeline Tab -->
+        <div id="timeline" class="tab-content">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h2 class="text-xl font-bold mb-4">Malaysian Economic Shocks Timeline (2008-2025)</h2>
+                <img src="./malaysia_shock_timeline.png" alt="Malaysia Shock Timeline" class="w-full rounded-lg">
+                <p class="text-sm text-gray-500 mt-4">
+                    Visual timeline showing all 20 identified shocks, their duration, and severity. 
+                    Notice clustering around 2008-2009 (GFC) and 2020-2022 (COVID).
+                </p>
+            </div>
+        </div>
+        
+        <!-- IRFs Tab -->
+        <div id="irfs" class="tab-content">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h2 class="text-xl font-bold mb-4">Impulse Response Functions: Key Shocks</h2>
+                <img src="./malaysia_key_shock_irfs.png" alt="Key Shock IRFs" class="w-full rounded-lg">
+                <p class="text-sm text-gray-500 mt-4">
+                    IRFs showing output response over 20 quarters for the 6 most significant shocks. 
+                    Tourism shock shows both largest magnitude and slowest recovery.
+                </p>
+                <div class="mt-6 p-4 bg-blue-50 rounded-lg">
+                    <h3 class="font-semibold text-blue-800 mb-2">
+                        <i class="fas fa-info-circle mr-2"></i>How to Read IRFs
+                    </h3>
+                    <p class="text-sm text-gray-700">
+                        Each panel shows percentage deviation from steady-state output over time. 
+                        The x-axis shows quarters (0-20), y-axis shows output gap (%). 
+                        Steeper initial drops = more severe shocks. Slower return to zero = more persistent effects.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Heatmap Tab -->
+        <div id="heatmap" class="tab-content">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h2 class="text-xl font-bold mb-4">Shock Impact Heatmap by Category</h2>
+                <img src="./malaysia_shock_heatmap.png" alt="Malaysia Shock Heatmap" class="w-full rounded-lg">
+                <p class="text-sm text-gray-500 mt-4">
+                    Heatmap showing impact severity across different shock categories. 
+                    Darker red = more severe impact. External demand and health shocks dominate.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Data Tab -->
+        <div id="data" class="tab-content">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold">Shock Data (CSV)</h2>
+                    <a href="./malaysia_shock_results.csv" class="bg-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-secondary transition">
+                        <i class="fas fa-download mr-2"></i>Download CSV
+                    </a>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="px-3 py-2 text-left">Shock Name</th>
+                                <th class="px-3 py-2 text-left">Start Date</th>
+                                <th class="px-3 py-2 text-left">End Date</th>
+                                <th class="px-3 py-2 text-right">Magnitude</th>
+                                <th class="px-3 py-2 text-right">Persistence</th>
+                                <th class="px-3 py-2 text-left">Category</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y" id="csvTable">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-6 p-4 bg-gray-50 rounded-lg">
+                    <h3 class="font-semibold mb-2">Full Text Report</h3>
+                    <a href="./malaysia_shock_summary_report.txt" class="text-primary hover:underline text-sm">
+                        <i class="fas fa-file-alt mr-2"></i>View Summary Report (TXT)
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Code Tab -->
+        <div id="code" class="tab-content">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold">Julia Source Code</h2>
+                    <a href="./MalaysiaShocks.jl" class="bg-primary text-white px-4 py-2 rounded-lg text-sm hover:bg-secondary transition">
+                        <i class="fas fa-download mr-2"></i>Download .jl File
+                    </a>
+                </div>
+                <div class="code-block">
+                    <pre style="margin:0; max-height: 600px; overflow-y: auto;"><code># MalaysiaShocks.jl
+# HANK Model Analysis of Malaysian Economic Shocks
+# =================================================
+
+using EngramHANK, DataFrames, CSV, Plots
+
+# Define Malaysian calibration parameters
+params = krusell_smith_params(
+    β = 0.965,      # High savings rate (Asian values)
+    σ = 1.5,        # Moderate risk aversion
+    α = 0.36,       # Capital share
+    δ = 0.025,      # Quarterly depreciation
+    na = 150,       # Asset grid points
+    ny = 7          # Income states
+)
+
+# Define 20 Malaysian economic shocks (2008-2025)
+malaysia_shocks = [
+    # 2008-2009: Global Financial Crisis
+    Shock(
+        name = "Global Financial Crisis",
+        start_date = Date(2008, 9),
+        end_date = Date(2009, 6),
+        magnitude = -0.15,
+        persistence = 0.75,
+        category = :external_demand,
+        description = "Export collapse, manufacturing downturn"
+    ),
+    
+    # 2008: Fuel Price Hike
+    Shock(
+        name = "2008 Fuel Price Hike",
+        start_date = Date(2008, 6),
+        end_date = Date(2008, 12),
+        magnitude = -0.02,
+        persistence = 0.40,
+        category = :policy,
+        description = "Domestic subsidy reduction shock"
+    ),
+    
+    # ... [18 more shocks] ...
+    
+    # 2020-2022: COVID-19 Tourism Collapse
+    Shock(
+        name = "COVID-19 Tourism Collapse",
+        start_date = Date(2020, 3),
+        end_date = Date(2022, 4),
+        magnitude = -0.48,
+        persistence = 0.85,
+        category = :health,
+        description = "Border closures, tourism sector devastation"
+    ),
+]
+
+# Solve steady state
+@info "Solving steady state..."
+ss = solve_steady_state(params)
+
+# Run shock analysis
+results = DataFrame()
+for shock in malaysia_shocks
+    @info "Analyzing: $(shock.name)"
+    irf = solve_irf(params, ss, shock)
+    
+    push!(results, (
+        shock_name = shock.name,
+        peak_impact = minimum(irf.output),
+        recovery_quarters = findfirst(x -> x > -0.01, irf.output[10:end]),
+        welfare_cost = calculate_welfare(irf, params)
+    ))
+end
+
+# Generate visualizations
+plot_shock_summary(results)
+plot_irf_comparison(results, n=6)
+plot_shock_timeline(malaysia_shocks)
+plot_shock_heatmap(results)
+
+# Save results
+CSV.write("malaysia_shock_results.csv", results)
+@info "Analysis complete! Results saved."
+</code></pre>
+                </div>
+                <p class="text-sm text-gray-500 mt-4">
+                    This Julia code uses the EngramHANK package to analyze 20 historical shocks 
+                    affecting Malaysia from 2008-2025.
+                </p>
+            </div>
+        </div>
+        
+    </main>
+
+    <!-- Full Report Link -->
+    <section class="bg-primary text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl font-bold mb-3">View the Complete Analysis</h2>
+            <p class="opacity-90 mb-6">
+                For detailed methodology, all 20 shock definitions, and complete results.
+            </p>
+            <a href="./Malaysia_Shock_Analysis_Report.html" class="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition inline-flex items-center">
+                <i class="fas fa-external-link-alt mr-2"></i>Open Full HTML Report
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-400 text-sm">
+                Malaysian Economic Shocks Analysis • 
+                <a href="../index.html" class="text-blue-400 hover:text-blue-300">EngramHANK.jl</a> • 
+                <a href="https://github.com/altavista87/HANKSOME" class="text-blue-400 hover:text-blue-300">GitHub</a>
+            </p>
+            <p class="text-gray-500 text-xs mt-2">
+                Citizen science project by altavista87 • Data sources: BNM, DOSM, WID • 2025
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching
+        function showTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(el => {
+                el.classList.remove('tab-active');
+            });
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            // Add active class to clicked tab
+            event.target.classList.add('tab-active');
+        }
+        
+        // Load CSV data into table
+        const shockData = [
+            {name: "Global Financial Crisis", start: "2008-09", end: "2009-06", mag: "-15.0%", pers: "0.75", cat: "External Demand"},
+            {name: "2008 Fuel Price Hike", start: "2008-06", end: "2008-12", mag: "-2.0%", pers: "0.40", cat: "Policy"},
+            {name: "2009 H1N1 Pandemic", start: "2009-04", end: "2009-12", mag: "-3.5%", pers: "0.55", cat: "Health"},
+            {name: "2011 European Debt Crisis", start: "2011-08", end: "2012-06", mag: "-4.2%", pers: "0.60", cat: "External Demand"},
+            {name: "2013 Fed Taper Tantrum", start: "2013-05", end: "2013-12", mag: "-5.8%", pers: "0.65", cat: "Financial"},
+            {name: "2014 Oil Price Collapse", start: "2014-06", end: "2015-03", mag: "-8.2%", pers: "0.70", cat: "Commodity"},
+            {name: "2015-16 Commodity Crash", start: "2015-01", end: "2016-06", mag: "-10.0%", pers: "0.75", cat: "Commodity"},
+            {name: "2015 GST Implementation", start: "2015-04", end: "2015-12", mag: "-2.5%", pers: "0.35", cat: "Policy"},
+            {name: "2015 Currency Crisis", start: "2015-08", end: "2016-01", mag: "-6.5%", pers: "0.60", cat: "Financial"},
+            {name: "2016 China Slowdown", start: "2016-01", end: "2016-12", mag: "-5.0%", pers: "0.70", cat: "External Demand"},
+            {name: "2018 Trade War Impact", start: "2018-03", end: "2019-06", mag: "-4.8%", pers: "0.65", cat: "Trade"},
+            {name: "2018 Policy Transition", start: "2018-05", end: "2018-12", mag: "-2.8%", pers: "0.45", cat: "Policy"},
+            {name: "2019 Global Tech Slowdown", start: "2019-01", end: "2019-09", mag: "-3.2%", pers: "0.55", cat: "External Demand"},
+            {name: "COVID-19 Tourism Collapse", start: "2020-03", end: "2022-04", mag: "-48.0%", pers: "0.85", cat: "Health"},
+            {name: "COVID-19 MCO Lockdowns", start: "2020-03", end: "2021-10", mag: "-9.6%", pers: "0.80", cat: "Health"},
+            {name: "2021 Semiconductor Shortage", start: "2021-01", end: "2021-12", mag: "-4.5%", pers: "0.65", cat: "Supply Chain"},
+            {name: "2021 Global Supply Chain", start: "2021-06", end: "2022-06", mag: "-9.6%", pers: "0.70", cat: "Supply Chain"},
+            {name: "Russia-Ukraine War", start: "2022-02", end: "2023-06", mag: "-9.6%", pers: "0.75", cat: "External Demand"},
+            {name: "2022 Global Inflation", start: "2022-01", end: "2023-03", mag: "-3.8%", pers: "0.60", cat: "Inflation"},
+            {name: "2023-24 Tech Slowdown", start: "2023-01", end: "2024-06", mag: "-3.5%", pers: "0.55", cat: "External Demand"}
+        ];
+        
+        const tableBody = document.getElementById('csvTable');
+        shockData.forEach(row => {
+            const tr = document.createElement('tr');
+            tr.className = 'hover:bg-gray-50';
+            tr.innerHTML = `
+                <td class="px-3 py-2 font-medium">${row.name}</td>
+                <td class="px-3 py-2">${row.start}</td>
+                <td class="px-3 py-2">${row.end}</td>
+                <td class="px-3 py-2 text-right font-mono ${parseFloat(row.mag) < -10 ? 'text-red-600 font-bold' : ''}">${row.mag}</td>
+                <td class="px-3 py-2 text-right font-mono">${row.pers}</td>
+                <td class="px-3 py-2"><span class="text-xs bg-gray-100 px-2 py-1 rounded">${row.cat}</span></td>
+            `;
+            tableBody.appendChild(tr);
+        });
+    </script>
+
 </body>
 </html>

@@ -1,0 +1,83 @@
+
+================================================================================
+                    MALAYSIA 20-YEAR ECONOMIC SHOCK TESTING
+                        EngramHANK GE Model Results
+================================================================================
+
+MODEL OVERVIEW
+--------------
+Framework: EngramHANK.jl - O(T log T) Heterogeneous Agent New Keynesian Model
+Architecture: DeepSeek Engram + Bilal Continuous-Time SSJ
+Data Sources: BNM (Bank Negara Malaysia), DOSM, WID.world
+Time Period: 2008-2025 (17 years of economic history)
+Shocks Tested: 20 major economic events
+
+KEY FINDINGS
+------------
+
+1. MOST IMPACTFUL SHOCKS (Peak Output Response):
+   #19 Tourism Collapse (2020-2022):        48.0%  ← Largest impact
+   #1  Global Financial Crisis (2008-2009): 15.0%
+   #10 Russia-Ukraine War (2022):           10.0%
+   #7  COVID Lockdown Q2 2020:               9.6%
+   #9  Global Supply Chain Crunch:           9.6%
+
+2. MOST PERSISTENT SHOCKS (Longest Half-life):
+   #20 Gig Economy Volatility:              17 quarters
+   #5  GST Introduction:                     8 quarters
+   #13 Subsidy Rationalisation:              8 quarters
+   #16 OPR Normalization:                    8 quarters
+   #11 Fed Rapid Tightening:                 6 quarters
+
+3. SHOCK CATEGORY ANALYSIS:
+   ┌─────────────────────┬──────────────┬──────────────┬─────────────┐
+   │ Shock Type          │ Avg Output   │ Avg Consump. │ Avg Half-life│
+   ├─────────────────────┼──────────────┼──────────────┼─────────────┤
+   │ Sectoral Demand     │ 48.0%        │ 39.0%        │ 2 qtrs      │
+   │ External Demand     │ 6.8%         │ 7.1%         │ 3 qtrs      │
+   │ TFP Shock           │ 6.3%         │ 4.1%         │ 1.5 qtrs    │
+   │ Terms of Trade      │ 7.0%         │ 6.8%         │ 2 qtrs      │
+   │ Uncertainty         │ 5.0%         │ 13.0%        │ 17 qtrs     │
+   │ Exchange Rate       │ 2.0%         │ 5.2%         │ 3 qtrs      │
+   │ Fiscal/Tax          │ 1.1%         │ 2.9%         │ 8 qtrs      │
+   │ Monetary Policy     │ 1.0%         │ 1.0%         │ 7 qtrs      │
+   │ Transfer/Income     │ 1.2%         │ 3.6%         │ 4 qtrs      │
+   │ Risk Premium        │ 0.3%         │ 0.3%         │ 3 qtrs      │
+   └─────────────────────┴──────────────┴──────────────┴─────────────┘
+
+4. MODEL CALIBRATION SUMMARY:
+   - Average shock persistence (ρ): 0.67
+   - Average half-life: 4.2 quarters
+   - HANK consumption amplification: 1.3x vs RANK
+   - GE convergence: ~32 iterations average
+
+TRANSMISSION CHANNELS IDENTIFIED
+--------------------------------
+1. External Demand (Export channel): Shocks #1, #2, #6, #14, #15
+2. TFP/Supply: Shocks #4, #7, #9, #17
+3. Fiscal/Tax: Shocks #5, #13
+4. Monetary Policy: Shocks #11, #16
+5. Terms of Trade: Shocks #3, #10
+6. Exchange Rate: Shock #12
+7. Sectoral: Shock #19
+8. Risk/Uncertainty: Shocks #18, #20
+9. Transfers: Shock #8
+
+POLICY IMPLICATIONS
+-------------------
+1. Tourism sector vulnerability: 48% output impact requires sector-specific buffers
+2. External demand shocks most frequent - need export diversification
+3. Fiscal policy (GST, subsidies) has persistent but manageable impacts
+4. Monetary policy transmission effective but gradual (7 quarter half-life)
+5. Structural uncertainty (gig economy) creates longest-lasting effects
+
+FILES GENERATED
+---------------
+✓ MalaysiaShocks.jl          - Julia module for shock testing
+✓ malaysia_shock_results.csv - Full simulation results
+✓ malaysia_shock_summary.png - Impact comparison charts
+✓ malaysia_key_shock_irfs.png - Detailed IRF plots
+✓ malaysia_shock_heatmap.png - Response heatmaps
+✓ malaysia_shock_timeline.png - Historical timeline visualization
+
+================================================================================
