@@ -153,12 +153,12 @@
     <section class="bg-white border-b">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex overflow-x-auto">
-                <div class="tab tab-active" onclick="showTab('overview')">Overview</div>
-                <div class="tab" onclick="showTab('timeline')">Timeline</div>
-                <div class="tab" onclick="showTab('irfs')">Impulse Responses</div>
-                <div class="tab" onclick="showTab('heatmap')">Shock Heatmap</div>
-                <div class="tab" onclick="showTab('data')">Raw Data</div>
-                <div class="tab" onclick="showTab('code')">Julia Code</div>
+                <div class="tab tab-active" data-tab="overview">Overview</div>
+                <div class="tab" data-tab="timeline">Timeline</div>
+                <div class="tab" data-tab="irfs">Impulse Responses</div>
+                <div class="tab" data-tab="heatmap">Shock Heatmap</div>
+                <div class="tab" data-tab="data">Raw Data</div>
+                <div class="tab" data-tab="code">Julia Code</div>
             </div>
         </div>
     </section>
@@ -529,8 +529,8 @@ CSV.write("malaysia_shock_results.csv", results)
     </footer>
 
     <script>
-        // Tab switching
-        function showTab(tabName) {
+        // Tab switching - using event delegation for better security
+        function showTab(tabName, clickedTab) {
             // Hide all tab contents
             document.querySelectorAll('.tab-content').forEach(el => {
                 el.classList.remove('active');
@@ -540,49 +540,123 @@ CSV.write("malaysia_shock_results.csv", results)
                 el.classList.remove('tab-active');
             });
             // Show selected tab content
-            document.getElementById(tabName).classList.add('active');
+            const contentElement = document.getElementById(tabName);
+            if (contentElement) {
+                contentElement.classList.add('active');
+            }
             // Add active class to clicked tab
-            event.target.classList.add('tab-active');
+            if (clickedTab) {
+                clickedTab.classList.add('tab-active');
+            }
         }
         
-        // Load CSV data into table
-        const shockData = [
-            {name: "Global Financial Crisis", start: "2008-09", end: "2009-06", mag: "-15.0%", pers: "0.75", cat: "External Demand"},
-            {name: "2008 Fuel Price Hike", start: "2008-06", end: "2008-12", mag: "-2.0%", pers: "0.40", cat: "Policy"},
-            {name: "2009 H1N1 Pandemic", start: "2009-04", end: "2009-12", mag: "-3.5%", pers: "0.55", cat: "Health"},
-            {name: "2011 European Debt Crisis", start: "2011-08", end: "2012-06", mag: "-4.2%", pers: "0.60", cat: "External Demand"},
-            {name: "2013 Fed Taper Tantrum", start: "2013-05", end: "2013-12", mag: "-5.8%", pers: "0.65", cat: "Financial"},
-            {name: "2014 Oil Price Collapse", start: "2014-06", end: "2015-03", mag: "-8.2%", pers: "0.70", cat: "Commodity"},
-            {name: "2015-16 Commodity Crash", start: "2015-01", end: "2016-06", mag: "-10.0%", pers: "0.75", cat: "Commodity"},
-            {name: "2015 GST Implementation", start: "2015-04", end: "2015-12", mag: "-2.5%", pers: "0.35", cat: "Policy"},
-            {name: "2015 Currency Crisis", start: "2015-08", end: "2016-01", mag: "-6.5%", pers: "0.60", cat: "Financial"},
-            {name: "2016 China Slowdown", start: "2016-01", end: "2016-12", mag: "-5.0%", pers: "0.70", cat: "External Demand"},
-            {name: "2018 Trade War Impact", start: "2018-03", end: "2019-06", mag: "-4.8%", pers: "0.65", cat: "Trade"},
-            {name: "2018 Policy Transition", start: "2018-05", end: "2018-12", mag: "-2.8%", pers: "0.45", cat: "Policy"},
-            {name: "2019 Global Tech Slowdown", start: "2019-01", end: "2019-09", mag: "-3.2%", pers: "0.55", cat: "External Demand"},
-            {name: "COVID-19 Tourism Collapse", start: "2020-03", end: "2022-04", mag: "-48.0%", pers: "0.85", cat: "Health"},
-            {name: "COVID-19 MCO Lockdowns", start: "2020-03", end: "2021-10", mag: "-9.6%", pers: "0.80", cat: "Health"},
-            {name: "2021 Semiconductor Shortage", start: "2021-01", end: "2021-12", mag: "-4.5%", pers: "0.65", cat: "Supply Chain"},
-            {name: "2021 Global Supply Chain", start: "2021-06", end: "2022-06", mag: "-9.6%", pers: "0.70", cat: "Supply Chain"},
-            {name: "Russia-Ukraine War", start: "2022-02", end: "2023-06", mag: "-9.6%", pers: "0.75", cat: "External Demand"},
-            {name: "2022 Global Inflation", start: "2022-01", end: "2023-03", mag: "-3.8%", pers: "0.60", cat: "Inflation"},
-            {name: "2023-24 Tech Slowdown", start: "2023-01", end: "2024-06", mag: "-3.5%", pers: "0.55", cat: "External Demand"}
-        ];
-        
-        const tableBody = document.getElementById('csvTable');
-        shockData.forEach(row => {
-            const tr = document.createElement('tr');
-            tr.className = 'hover:bg-gray-50';
-            tr.innerHTML = `
-                <td class="px-3 py-2 font-medium">${row.name}</td>
-                <td class="px-3 py-2">${row.start}</td>
-                <td class="px-3 py-2">${row.end}</td>
-                <td class="px-3 py-2 text-right font-mono ${parseFloat(row.mag) < -10 ? 'text-red-600 font-bold' : ''}">${row.mag}</td>
-                <td class="px-3 py-2 text-right font-mono">${row.pers}</td>
-                <td class="px-3 py-2"><span class="text-xs bg-gray-100 px-2 py-1 rounded">${row.cat}</span></td>
-            `;
-            tableBody.appendChild(tr);
+        // Add event listeners to tabs
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function(e) {
+                const tabName = e.target.dataset.tab;
+                showTab(tabName, e.target);
+            });
         });
+        
+        // CSV Loading and Table Population
+        async function loadShockData() {
+            const tableBody = document.getElementById('csvTable');
+            const loadingRow = document.createElement('tr');
+            loadingRow.innerHTML = '<td colspan="6" class="text-center py-4 text-gray-500"><i class="fas fa-spinner fa-spin mr-2"></i>Loading data...</td>';
+            tableBody.appendChild(loadingRow);
+            
+            try {
+                // Try to fetch CSV data
+                const response = await fetch('./malaysia_shock_results.csv');
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const csvText = await response.text();
+                const data = parseCSV(csvText);
+                
+                // Clear loading row
+                tableBody.innerHTML = '';
+                
+                // Populate table
+                populateTable(data);
+                
+            } catch (error) {
+                console.warn('Failed to load CSV, using fallback data:', error);
+                tableBody.innerHTML = '';
+                populateTable(getFallbackData());
+            }
+        }
+        
+        function parseCSV(csvText) {
+            const lines = csvText.trim().split('\n');
+            const headers = lines[0].split(',').map(h => h.trim());
+            
+            return lines.slice(1).map(line => {
+                const values = line.split(',').map(v => v.trim());
+                const row = {};
+                headers.forEach((header, index) => {
+                    row[header] = values[index] || '';
+                });
+                return row;
+            });
+        }
+        
+        function populateTable(data) {
+            const tableBody = document.getElementById('csvTable');
+            
+            data.forEach((row, index) => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-gray-50';
+                tr.style.animationDelay = `${index * 50}ms`;
+                
+                const magnitude = parseFloat(row.Magnitude || row.mag || 0);
+                const isSevere = magnitude < -10;
+                
+                tr.innerHTML = `
+                    <td class="px-3 py-2 font-medium">${row['Shock Name'] || row.name || 'Unknown'}</td>
+                    <td class="px-3 py-2">${row['Start Date'] || row.start || '-'}</td>
+                    <td class="px-3 py-2">${row['End Date'] || row.end || '-'}</td>
+                    <td class="px-3 py-2 text-right font-mono ${isSevere ? 'text-red-600 font-bold' : ''}">${row.Magnitude || row.mag || '-'}%</td>
+                    <td class="px-3 py-2 text-right font-mono">${row.Persistence || row.pers || '-'}</td>
+                    <td class="px-3 py-2"><span class="text-xs bg-gray-100 px-2 py-1 rounded">${row.Category || row.cat || 'Unknown'}</span></td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        }
+        
+        function getFallbackData() {
+            // Fallback data if CSV fails to load
+            return [
+                {name: "Global Financial Crisis", start: "2008-09", end: "2009-06", mag: "-15.0%", pers: "0.75", cat: "External Demand"},
+                {name: "2008 Fuel Price Hike", start: "2008-06", end: "2008-12", mag: "-2.0%", pers: "0.40", cat: "Policy"},
+                {name: "2009 H1N1 Pandemic", start: "2009-04", end: "2009-12", mag: "-3.5%", pers: "0.55", cat: "Health"},
+                {name: "2011 European Debt Crisis", start: "2011-08", end: "2012-06", mag: "-4.2%", pers: "0.60", cat: "External Demand"},
+                {name: "2013 Fed Taper Tantrum", start: "2013-05", end: "2013-12", mag: "-5.8%", pers: "0.65", cat: "Financial"},
+                {name: "2014 Oil Price Collapse", start: "2014-06", end: "2015-03", mag: "-8.2%", pers: "0.70", cat: "Commodity"},
+                {name: "2015-16 Commodity Crash", start: "2015-01", end: "2016-06", mag: "-10.0%", pers: "0.75", cat: "Commodity"},
+                {name: "2015 GST Implementation", start: "2015-04", end: "2015-12", mag: "-2.5%", pers: "0.35", cat: "Policy"},
+                {name: "2015 Currency Crisis", start: "2015-08", end: "2016-01", mag: "-6.5%", pers: "0.60", cat: "Financial"},
+                {name: "2016 China Slowdown", start: "2016-01", end: "2016-12", mag: "-5.0%", pers: "0.70", cat: "External Demand"},
+                {name: "2018 Trade War Impact", start: "2018-03", end: "2019-06", mag: "-4.8%", pers: "0.65", cat: "Trade"},
+                {name: "2018 Policy Transition", start: "2018-05", end: "2018-12", mag: "-2.8%", pers: "0.45", cat: "Policy"},
+                {name: "2019 Global Tech Slowdown", start: "2019-01", end: "2019-09", mag: "-3.2%", pers: "0.55", cat: "External Demand"},
+                {name: "COVID-19 Tourism Collapse", start: "2020-03", end: "2022-04", mag: "-48.0%", pers: "0.85", cat: "Health"},
+                {name: "COVID-19 MCO Lockdowns", start: "2020-03", end: "2021-10", mag: "-9.6%", pers: "0.80", cat: "Health"},
+                {name: "2021 Semiconductor Shortage", start: "2021-01", end: "2021-12", mag: "-4.5%", pers: "0.65", cat: "Supply Chain"},
+                {name: "2021 Global Supply Chain", start: "2021-06", end: "2022-06", mag: "-9.6%", pers: "0.70", cat: "Supply Chain"},
+                {name: "Russia-Ukraine War", start: "2022-02", end: "2023-06", mag: "-9.6%", pers: "0.75", cat: "External Demand"},
+                {name: "2022 Global Inflation", start: "2022-01", end: "2023-03", mag: "-3.8%", pers: "0.60", cat: "Inflation"},
+                {name: "2023-24 Tech Slowdown", start: "2023-01", end: "2024-06", mag: "-3.5%", pers: "0.55", cat: "External Demand"}
+            ];
+        }
+        
+        // Load data when page loads
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadShockData);
+        } else {
+            loadShockData();
+        }
     </script>
 
 </body>
