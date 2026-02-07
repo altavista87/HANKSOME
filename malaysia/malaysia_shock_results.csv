@@ -1,0 +1,21 @@
+ID,Shock Event,Period,Type,Magnitude (%),Peak Output (%),Peak Consumption (%),Peak Rate (bps),Half-life (qtrs),Total Impact,Persistence
+1,Global Financial Crisis,2008-2009,External Demand,-15.0,15.0,15.6,450.0,3,-60.0,0.7
+2,Eurozone Crisis Spillover,2010-2012,External Demand,-5.0,5.0,5.2,150.0,2,-15.0,0.6
+3,Commodity Price Swings,2011-2014,Terms of Trade,10.0,4.0,3.9,100.0,2,9.6,0.5
+4,Major Floods (East Coast),2014-2015,TFP Shock,-3.0,3.6,2.34,60.0,1,-6.17,0.3
+5,GST Introduction,2015,Fiscal/Tax,6.0,1.8,4.68,60.0,8,-20.93,0.9
+6,US-China Trade War,2018-2019,External Demand,-5.0,5.0,5.2,150.0,3,-17.14,0.65
+7,COVID Lockdown Q2 2020,2020-Q2,TFP Shock,-8.0,9.6,6.24,160.0,1,-14.4,0.2
+8,PRIHATIN Income Support,2020-2021,Transfer/Income,4.0,1.2,3.64,20.0,4,7.2,0.8
+9,Global Supply Chain Crunch,2021-2022,TFP Shock,8.0,9.6,6.24,160.0,3,38.4,0.7
+10,Russia-Ukraine War,2022,Terms of Trade,25.0,10.0,9.75,250.0,2,30.0,0.6
+11,Fed Rapid Tightening,2022-2023,Monetary Policy,3.5000000000000004,1.75,1.82,350.0,6,-13.93,0.85
+12,Ringgit Depreciation,2022-2023,Exchange Rate,-10.0,2.0,5.2,200.0,3,-9.6,0.75
+13,Subsidy Rationalisation,2023,Fiscal/Tax,1.5,0.45,1.17,15.0,8,-5.23,0.9
+14,China Growth Slowdown,2023-2024,External Demand,-4.0,4.0,4.16,120.0,4,-23.98,0.8
+15,Tech-Cycle Rebound,2024,External Demand,5.0,5.0,5.2,150.0,3,20.0,0.7
+16,OPR Normalization,2024-2025,Monetary Policy,0.5,0.25,0.26,50.0,8,-2.91,0.9
+17,Klang Valley Floods,2021-2022,TFP Shock,-2.0,2.4,1.56,40.0,1,-3.84,0.25
+18,1MDB Confidence Overhang,2016-2018,Risk Premium,0.8,0.32,0.31,40.0,3,-1.28,0.7
+19,Tourism Collapse,2020-2022,Sectoral Demand,-60.0,48.0,39.0,900.0,2,-96.0,0.4
+20,Gig Economy Volatility,Structural,Uncertainty,25.0,5.0,13.0,250.0,17,-98.13,0.95
